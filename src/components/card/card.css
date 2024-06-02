@@ -28,6 +28,8 @@
 } */
 
 .card-features {
+  position: relative;
+  bottom: -50px;
   align-self: end;
   margin-left: 20px;
   height: 20vh;

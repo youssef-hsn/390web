@@ -49,7 +49,7 @@ export default function Home() {
             src={ProductCardPhoto1}
             alt="Hello1"
           />
-          <div className="home-products-numberofproperties">3 properties</div>
+          <div className="home-products-numberofproperties">property 1</div>
         </div>
         <div className="home-products-product2">
           <img
@@ -57,7 +57,7 @@ export default function Home() {
             src={ProductCardPhoto2}
             alt="Hello2"
           />
-          <div className="home-products-numberofproperties">3 properties</div>
+          <div className="home-products-numberofproperties">property 2</div>
         </div>
         <div className="home-products-product3">
           <img
@@ -65,7 +65,7 @@ export default function Home() {
             src={ProductCardPhoto3}
             alt="Hello3"
           />
-          <div className="home-products-numberofproperties">3 properties</div>
+          <div className="home-products-numberofproperties">property 3</div>
         </div>
       </div>
 

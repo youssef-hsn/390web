@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./signin.css";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, json, useNavigate } from "react-router-dom";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 
 export default function SignIn() {
@@ -26,36 +26,48 @@ export default function SignIn() {
     setIsSubmitting(true);
     setSubmitError("");
     try {
-      const response = await axios.post("http://localhost:7000/auth/login", {
-        userName: userName,
-        password: password,
+      const credentials = {
+        'username': userName,
+        'password': password
+      }
+      console.log("sending login reques with " + JSON.stringify(credentials))
+      const response = await fetch('https://brokerage001.000webhostapp.com/test.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials),
       });
 
-      console.log(response.data);
-      navigate("/");
+        console.log(response);
+        localStorage.setItem('authToken', response.data.token);
+        navigate("/");
     } catch (error) {
-      console.error(error);
+      console.log("error")
+        console.error(error);
 
-      if (error.response) {
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        console.log(error.response.data); // Detailed error response from the server
-        console.log(error.response.status); // Status code
-        console.log(error.response.headers); // Response headers
-      } else if (error.request) {
-        // The request was made but no response was received
-        // `error.request` is an instance of XMLHttpRequest in the browser
-        console.log(error.request);
-      } else {
-        // Something happened in setting up the request that triggered an Error
-        console.log("Error", error.message);
-      }
+        if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log(error.response.data); // Detailed error response from the server
+            console.log(error.response.status); // Status code
+            console.log(error.response.headers); // Response headers
+        } else if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser
+            console.log(error.request);
+        } else {
+            // Something happened in setting up the request that triggered an Error
+            console.log("Error", error.message);
+        }
 
-      setSubmitError("An error occurred. Please try again.");
+        setSubmitError("An error occurred. Please try again.");
     } finally {
-      setIsSubmitting(false);
+        setIsSubmitting(false);
     }
-  };
+};
+
+
 
   return (
     <div className="signin">

@@ -48,6 +48,28 @@ export default function ListProperties() {
             key={index} // Add a unique key prop for each property
           />
         ))}
+        {/* test static data */}
+
+        <CardMain
+            image={"https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800"}
+            title={"Property"}
+            place={"Halba"}
+            numberBedRoom={3}
+            numberBathRooms={2}
+            capacity={100}
+            price={33333}
+            key={1} 
+          />
+          <CardMain
+            image={"https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=800"}
+            title={"Property2"}
+            place={"Halba"}
+            numberBedRoom={3}
+            numberBathRooms={2}
+            capacity={100}
+            price={33333}
+            key={2} 
+          />
       </div>
     </div>
   );
